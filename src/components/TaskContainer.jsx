@@ -10,7 +10,7 @@ export default function TaskContainer() {
   dans toutes les opérations c'est à dire modifier ou supprimer ou ajouter une Tâche .
   */
   const [tasksList, setTasksList] = useState([]);
-  console.log(tasksList); 
+  //console.log(tasksList);
 
   // Function
   /* Cette fonction nous servira a ajouter une tâche */
@@ -23,11 +23,43 @@ export default function TaskContainer() {
     setTasksList([...tasksList, newTask]);
   };
 
+  // Cette fonction va nous permettre d'éditer une tache //
+  const editTask = (id, completedValue) => {
+    setTasksList(
+      tasksList.map((task) =>
+        task.id === id ? { ...task, completed: completedValue } : task
+      )
+    );
+  };
+
+  // Cette fonction va nous servire a supprimer la tâche //
+  const deleteTask = (id) => {
+    setTasksList(tasksList.filter((task) => task.id !== id));
+  };
+
+  // Cette fonction a compter les tâches à accomplir //
+  const getTaskCounts = () => {
+    const completedTasks = tasksList.filter((task) => task.completed).length;
+    const incompletedTasks = tasksList.length - completedTasks;
+    return {
+      completedTasks,
+      incompletedTasks,
+    };
+  };
+
+  const { completedTasks, incompletedTasks} = getTaskCounts();
+  console.log(completedTasks, incompletedTasks);
+
   return (
     <main>
       <Header />
       <TaskInput addTask={addTask} />
-      <TaskList />
+      <TaskList
+        tasksList={tasksList}
+        editTask={editTask}
+        deleteTask={deleteTask}
+        incompletedTasks={incompletedTasks}
+      />
       <Footer />
     </main>
   );

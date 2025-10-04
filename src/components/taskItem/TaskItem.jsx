@@ -2,14 +2,17 @@ import React from "react";
 import styles from "./taskItem.module.css";
 
 // ce composant va nous servire a afficher une tâche de notre todo //
-export default function TaskItem() {
+export default function TaskItem({ task, editTask, deleteTask }) {
   return (
-    <li className={` ${styles.container} ${styles.default}`}>
+    <li
+      className={` ${styles.container} ${
+        task?.completed ? styles.success : styles.default
+      }`}
+      onClick={() => editTask(task.id, !task.completed)}
+    >
       <div className={styles.item}>
-        <div className={`${styles.id} ${styles.idDefault}`}>1</div>
-        <div className={styles.contentDefault}>
-          Ranger mon bureau et finir d'apprendre React
-        </div>
+        <div className={`${styles.id} ${styles.idDefault}`}>{task.id}</div>
+        <div className={styles.contentDefault}>{task.title}</div>
       </div>
       <button className="button-primary">Supprimer</button>
     </li>
