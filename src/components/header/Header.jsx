@@ -9,7 +9,7 @@ export default function Header() {
       <div className={styles.titleContainer}>
         <img src={reactLogo} alt="Logo" width={50} height={50}/>
         <div>
-          <h1>Todo</h1>
+          <h1>Todo-React</h1>
           <div className="color-gray">
             <code>Éliminez le chaos, suivez le flux.</code>
           </div>
