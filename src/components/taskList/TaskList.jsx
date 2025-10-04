@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./taskList.module.css";
+import TaskItem from "../taskItem/TaskItem";
 // Ce composant est utilisé pour afficher la liste des tâches
 export default function TaskList() {
   return (
@@ -8,7 +9,7 @@ export default function TaskList() {
         Il te reset encore x tâches a accomplir !
       </h2>
       <ul className={styles.container}>
-        composant taskList ... 
+        <TaskItem />
       </ul>
     </div>
   );

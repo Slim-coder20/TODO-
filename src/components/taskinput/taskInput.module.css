@@ -1,6 +1,6 @@
 .element {
   margin-bottom: 30px;
-  filter: drop-shadow(0 0 1em rgba(59, 121, 246, 0.15));
+  filter: drop-shadow(0 0 1em rgba(59, 121, 246, 0.10));
 }
 
 .container {
