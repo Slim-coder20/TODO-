@@ -16,10 +16,33 @@ export default function TaskList({
       deleteTask={deleteTask}
     />
   ));
+  // On agit sur le rendu au niveau du return à propos de l'affichage de tâches a acomplir //
+  if (taskList && taskList.length > 0) {
+    return (
+      <div className="box">
+        <h2 className={styles.title}>
+          {incompletedTasks > 0 && (
+            <>
+              Il te reset encore{" "}
+              <span className="important">{incompletedTasks}</span> tâches a
+              accomplir !
+            </>
+          )}
+          {incompletedTasks === 0 && (
+            <>Génial, tu as accompli toutes tes taches !</>
+          )}
+        </h2>
+        {tasksList && tasksList.length > 0 && (
+          <ul className={styles.container}>{taskList}</ul>
+        )}
+      </div>
+    );
+  }
+  // Condition ou pas de tâche a faire //
   return (
     <div className="box">
       <h2 className={styles.title}>
-        Il te reset encore {incompletedTasks} tâches a accomplir !
+        Tu n'a rien à faire ! Profite de ton temps libre.
       </h2>
       {tasksList && tasksList.length > 0 && (
         <ul className={styles.container}>{taskList}</ul>
