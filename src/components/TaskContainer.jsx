@@ -47,7 +47,7 @@ export default function TaskContainer() {
     };
   };
 
-  const { completedTasks, incompletedTasks} = getTaskCounts();
+  const { completedTasks, incompletedTasks } = getTaskCounts();
   console.log(completedTasks, incompletedTasks);
 
   return (
@@ -60,7 +60,7 @@ export default function TaskContainer() {
         deleteTask={deleteTask}
         incompletedTasks={incompletedTasks}
       />
-      <Footer />
+      <Footer completedTasks={completedTasks} />
     </main>
   );
 }
